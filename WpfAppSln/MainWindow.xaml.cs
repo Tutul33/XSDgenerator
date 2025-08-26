@@ -28,7 +28,11 @@ namespace WpfAppSln
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Selects a folder to save the generated XSD file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectFolder_Click(object sender, RoutedEventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
@@ -39,7 +43,11 @@ namespace WpfAppSln
                 }
             }
         }
-
+        /// <summary>
+        /// Generates an XSD file based on the schema of the specified stored procedure.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenerateXsd_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -102,14 +110,18 @@ namespace WpfAppSln
                     }
                 }
 
-                System.Windows.MessageBox.Show($"✅ XSD file generated at:\n{outputFile}");
+                System.Windows.MessageBox.Show($"XSD file generated at:\n{outputFile}");
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show("Error: " + ex.Message);
             }
         }
-
+        /// <summary>
+        /// Maps .NET types to corresponding XSD types.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private string MapToXsdType(Type type)
         {
             if (type == typeof(int) || type == typeof(long) || type == typeof(short)) return "xs:int";
